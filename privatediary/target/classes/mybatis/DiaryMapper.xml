@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.diary.mapper.DiaryMapper">
+
+    <insert id="create">
+        INSERT INTO diary(nickname, title, weather, diaryType, context) VALUE (#{nickname}, #{title}, #{weather}, #{diaryType}, #{context});
+    </insert>
+
+    <select id="getAllDiary" parameterType="String" resultType="list">
+        select * from diary;
+    </select>
+
+    <select id="getDiaryListByNickname" parameterType="String" resultType="list">
+        select * from diary where nickname = #{nickname};
+    </select>
+
+    <delete id="delDiary">
+        delete * from 'diary' where dId = #{dId};
+    </delete>
+
+    <select id="getDiaryByNicknameAndType" resultType="com.diary.entity.Diary">
+        select * from diary where nickname = #{nickname} and diaryType = #{type};
+    </select>
+
+    <select id="getDiaryById" parameterType="String" resultType="com.diary.entity.Diary">
+        select * from diary WHERE dId = #{id};
+    </select>
+
+</mapper>

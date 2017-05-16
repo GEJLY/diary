@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello</title>
+
+    <script type="text/javascript" src="../js/jquery1.7.js"></script>
+</head>
+<body>
+<h1>hello word!</h1>
+<form id="creatDiary">
+    <input name="nickname" value="admin">
+    <input name="title" type="text">
+    <input name="weather" type="text">
+    <input type="text" name="diaryType">
+    <input name="context" type="text">
+
+    <input type="submit" value="submit">
+</form>
+
+<script>
+    $("#creatDiary").submit(function() {
+
+
+            $.ajax({
+                type: "post",
+                url: "http://192.168.6.116:8080/pd/diary/create",
+                dataType: "text/json",
+                data: $("#creatDiary").serialize(),
+                success: function(json) {
+                    alert(json);
+
+                    console.log(json);
+                }
+            });
+    });
+</script>
+</body>
+</html>
